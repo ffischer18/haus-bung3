@@ -1,6 +1,6 @@
 package Beispiel1;
 
-public class Weapons {
+public class Weapon {
     private String name;
     private CombatType combatType;
     private DamageType damageType;
@@ -9,10 +9,7 @@ public class Weapons {
     private int strength;
     private int value;
 
-    public Weapons() {
-    }
-
-    public Weapons(String name, CombatType combatType, DamageType damageType, int damage, int speed, int strength, int value) {
+    public Weapon(String name, CombatType combatType, DamageType damageType, int damage, int speed, int strength, int value) {
         this.name = name;
         this.combatType = combatType;
         this.damageType = damageType;
@@ -38,11 +35,11 @@ public class Weapons {
         this.combatType = combatType;
     }
 
-    public DamageType getDamgeType() {
+    public DamageType getDamageType() {
         return damageType;
     }
 
-    public void setDamgeType(DamageType damageType) {
+    public void setDamageType(DamageType damageType) {
         this.damageType = damageType;
     }
 
@@ -78,12 +75,7 @@ public class Weapons {
         this.value = value;
     }
 
-    @Override
-    public String toString() {
-        return this.name + ";" + this.combatType + ";" + this.damageType + ";" + this.damage + ";" + this.speed + ";" + this.strength + ";" + this.value;
-    }
-
-    public static Weapons deserialize(String serialized) {
+    public static Weapon deserialize(String serialized) {
         if (serialized == null || serialized.isEmpty()) {
             return null;
         }
@@ -98,8 +90,7 @@ public class Weapons {
         int speed = Integer.parseInt(parts[4]);
         int strength = Integer.parseInt(parts[5]);
         int value = Integer.parseInt(parts[6]);
-        Weapons p = new Weapons(name, combatType, damageType, damage, speed, strength, value);
-        return p;
+        return new Weapon(name, combatType, damageType, damage, speed, strength, value);
     }
 }
 
