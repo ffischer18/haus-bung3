@@ -9,6 +9,9 @@ public class Weapon {
     private int strength;
     private int value;
 
+    public Weapon() {
+    }
+
     public Weapon(String name, CombatType combatType, DamageType damageType, int damage, int speed, int strength, int value) {
         this.name = name;
         this.combatType = combatType;

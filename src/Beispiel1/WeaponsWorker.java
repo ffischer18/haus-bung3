@@ -1,5 +1,8 @@
 package Beispiel1;
 
+import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
+
+import javax.crypto.spec.PSource;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,6 +15,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class WeaponsWorker {
 
@@ -57,7 +61,7 @@ public class WeaponsWorker {
 
     // sortieren mithilfe von lambdas
     public void sortA() {
-        weapons.sort((w1, w2) -> w1.getDamage() - w2.getDamage());
+        weapons.sort((w1, w2) -> {return w1.getDamage() - w2.getDamage();});
     }
 
     public void sortB() {
@@ -75,20 +79,27 @@ public class WeaponsWorker {
     public void printWeapons() {
         sortA();
         Printable print = (weaponList) -> {
-            for (Weapon weapon : weapons) {
-                System.out.println(weapon);
+            for (Weapon w:weapons) {
+                System.out.println(w.getName() + " " + w.getCombatType() + " " + w.getDamageType() + " " + w.getDamage() + " " + w.getSpeed() + " " + w.getStrength() + " " + w.getValue());
             }
         };
+        print.print(weapons);
     }
 
     public void printTable() {
         sortB();
         Printable print = (weaponList) -> {
-            for (Weapon weapon : weapons) {
-                System.out.print("-");
-                System.out.println("|" + weapon + "|");
-                System.out.print("+");
+            // System.out.format: %formatierung -links +rechts 20groesse
+            String format = "| %-20s | %-20s | %-20s | %-20s | %-20s | %-20s | %-20s| %n";
+            System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------------");
+            System.out.format(format, "Name", "CombatType", "DamageType", "Damage", "Speed", "Strength", "value");
+            for (Weapon w:weapons) {
+                System.out.println("-----------------------+----------------------+----------------------+----------------------+----------------------+----------------------+----------------------");
+
+                System.out.format(format, w.getName(), w.getCombatType(), w.getDamageType(), w.getDamage(), w.getSpeed(), w.getStrength(), w.getValue());
             }
+            System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------------");
         };
+        print.print(weapons);
     }
 }

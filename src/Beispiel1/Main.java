@@ -7,7 +7,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Main {
-    public void main(String[] args){
-
+    public static void main(String[] args) throws IOException {
+        WeaponsWorker ww = new WeaponsWorker();
+        ww.readCSVFile();
+        //ww.printWeapons();
+        ww.printTable();
     }
 }

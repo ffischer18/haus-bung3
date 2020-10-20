@@ -1,14 +1,22 @@
 package Beispiel2;
 
+import Beispiel1.CombatType;
+import Beispiel1.DamageType;
+import Beispiel1.Weapon;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Streams {
+    private List<Weapon> weapons = new ArrayList<>();
 
     int[] randomInt = new int[(int)(Math.random() * 1001)];
-    //String[] randomStr = new String[10]{"fuenf", "fuenf", "fuenf", "fuenf", "fuenf", "fuenf", "fuenf", "fuenf", "fuenf", "fuenf"};
+    //String[] randomStr = new String[1]{(String)(Math.random() * 10) + 1};
 
     public double average(int[] numbers) {
         double mittel = 0 ;
@@ -27,6 +35,23 @@ public class Streams {
             list.add(strings[i].toUpperCase());
         }
         return list;
+    }
+
+    public void readCSV() throws IOException {
+        // mit lambdas einlesen
+        weapons = Files.lines(new File("weapons.csv").toPath())
+                .skip(1)
+                .map(s -> s.split(";"))
+                .map(s -> new Weapon(
+                        s[0],
+                        CombatType.valueOf(s[1]),
+                        DamageType.valueOf(s[2]),
+                        Integer.parseInt(s[3]),
+                        Integer.parseInt(s[4]),
+                        Integer.parseInt(s[5]),
+                        Integer.parseInt(s[6])
+                ))
+                .collect(Collectors.toList());
     }
 /*
     public Weapon findWeaponWithLowestDamage(List<Weapon> weapons) {
