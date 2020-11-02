@@ -16,7 +16,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class StreamsTest {
-/*
 
     private List<Weapon> weapons;
 
@@ -40,11 +39,9 @@ public class StreamsTest {
     public void tearDown() {
     }
 
-    */
-/**
+    /**
      * Test of average method, of class Streams.
-     *//*
-
+     */
     @Test
     public void testAverage() {
         System.out.println("average");
@@ -58,11 +55,9 @@ public class StreamsTest {
         assertEquals(expResult, result, 0.0);
     }
 
-    */
-/**
+    /**
      * Test of upperCase method, of class Streams.
-     *//*
-
+     */
     @Test
     public void testUpperCase() {
         System.out.println("upperCase");
@@ -73,11 +68,9 @@ public class StreamsTest {
         assertEquals(expResult, result);
     }
 
-    */
-/**
+    /**
      * Test of findWeaponWithLowestDamage method, of class Streams.
-     *//*
-
+     */
     @Test
     public void testFindWeaponWithLowestDamage() {
         System.out.println("findWeaponWithLowestDamage");
@@ -87,11 +80,9 @@ public class StreamsTest {
         assertEquals(expResult, result);
     }
 
-    */
-/**
+    /**
      * Test of findWeaponWithHighestStrength method, of class Streams.
-     *//*
-
+     */
     @Test
     public void testFindWeaponWithHighestStrength() {
         System.out.println("findWeaponWithHighestStrength");
@@ -101,11 +92,9 @@ public class StreamsTest {
         assertEquals(expResult, result);
     }
 
-    */
-/**
+    /**
      * Test of collectMissileWeapons method, of class Streams.
-     *//*
-
+     */
     @Test
     public void testCollectMissileWeapons() {
         System.out.println("collectMissileWeapons");
@@ -118,11 +107,9 @@ public class StreamsTest {
         assertEquals(expResult, result);
     }
 
-    */
-/**
+    /**
      * Test of findWeaponWithLongestName method, of class Streams.
-     *//*
-
+     */
     @Test
     public void testFindWeaponWithLongestName() {
         System.out.println("findWeaponWithLongestName");
@@ -132,11 +119,9 @@ public class StreamsTest {
         assertEquals(expResult, result);
     }
 
-    */
-/**
+    /**
      * Test of toNameList method, of class Streams.
-     *//*
-
+     */
     @Test
     public void testToNameList() {
         System.out.println("toNameList");
@@ -162,11 +147,9 @@ public class StreamsTest {
         assertEquals(expResult, result);
     }
 
-    */
-/**
+    /**
      * Test of toSpeedArray method, of class Streams.
-     *//*
-
+     */
     @Test
     public void testToSpeedArray() {
         System.out.println("toSpeedArray");
@@ -176,11 +159,9 @@ public class StreamsTest {
         assertArrayEquals(expResult, result);
     }
 
-    */
-/**
+    /**
      * Test of sumUpValues method, of class Streams.
-     *//*
-
+     */
     @Test
     public void testSumUpValues() {
         System.out.println("sumUpValues");
@@ -190,11 +171,9 @@ public class StreamsTest {
         assertEquals(expResult, result);
     }
 
-    */
-/**
+    /**
      * Test of sumUpHashCodes method, of class Streams.
-     *//*
-
+     */
     @Test
     public void testSumUpHashCodes() {
         System.out.println("sumUpHashCodes");
@@ -207,11 +186,9 @@ public class StreamsTest {
         assertEquals(expResult, result);
     }
 
-    */
-/**
+    /**
      * Test of removeDuplicates method, of class Streams.
-     *//*
-
+     */
     @Test
     public void testRemoveDuplicates() {
         System.out.println("removeDuplicates");
@@ -223,11 +200,9 @@ public class StreamsTest {
         assertEquals(expResult, result);
     }
 
-    */
-/**
+    /**
      * Test of increaseValuesByTenPercent method, of class Streams.
-     *//*
-
+     */
     @Test
     public void testIncreaseValuesByTenPercent() throws IOException {
         System.out.println("increaseValuesByTenPercent");
@@ -641,6 +616,5 @@ public class StreamsTest {
         Weapon weapon0 = streams0.findWeaponWithLowestDamage(linkedList0);
         assertNull(weapon0);
     }
-*/
 
 }
