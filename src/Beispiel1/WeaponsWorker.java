@@ -30,6 +30,7 @@ public class WeaponsWorker {
         /*
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("weapons.csv")));) {
             String line;
+            line= br.readLine(); // erste Zeile skippen
             while ((line = br.readLine()) != null) {
                 Weapon w = Weapon.deserialize(line);
                 if (line != null) {
@@ -45,7 +46,9 @@ public class WeaponsWorker {
 
         // mit lambdas einlesen
         weapons = Files.lines(new File("weapons.csv").toPath())
+                //erste zeile überspringen
                 .skip(1)
+                //trennt bei ";" und speichert die Weapon werte
                 .map(s -> s.split(";"))
                 .map(s -> new Weapon(
                         s[0],
@@ -56,16 +59,18 @@ public class WeaponsWorker {
                         Integer.parseInt(s[5]),
                         Integer.parseInt(s[6])
                 ))
+                // gespeicherten Werte in List umwandeln
                 .collect(Collectors.toList());
     }
 
     // sortieren mithilfe von lambdas
-    public void sortA() {
+    public void sortA(List<Weapon> weapons) {
         weapons.sort((w1, w2) -> {return w1.getDamage() - w2.getDamage();});
     }
 
-    public void sortB() {
+    public void sortB(List<Weapon> weapons) {
         weapons.sort((w1, w2) -> {
+            // wenn w1 und w2 gleich returned compareTo 0 und so weiter
             if (0 != w1.getCombatType().compareTo(w2.getCombatType())) {
                 return w1.getCombatType().compareTo(w2.getCombatType());
             }
@@ -77,7 +82,7 @@ public class WeaponsWorker {
     }
 
     public void printWeapons() {
-        sortA();
+        sortA(weapons);
         Printable print = (weaponList) -> {
             for (Weapon w:weapons) {
                 System.out.println(w.getName() + " " + w.getCombatType() + " " + w.getDamageType() + " " + w.getDamage() + " " + w.getSpeed() + " " + w.getStrength() + " " + w.getValue());
@@ -87,17 +92,19 @@ public class WeaponsWorker {
     }
 
     public void printTable() {
-        sortB();
+        sortB(weapons);
         Printable print = (weaponList) -> {
-            // System.out.format: %formatierung -links +rechts 20groesse
+            // System.out.format: %formatierung der Werte zb: Name, CombatType -links +rechts 20groesse
             String format = "| %-20s | %-20s | %-20s | %-20s | %-20s | %-20s | %-20s| %n";
+            // header
             System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------------");
-            System.out.format(format, "Name", "CombatType", "DamageType", "Damage", "Speed", "Strength", "value");
+            System.out.format(format, "Name", "CombatType", "DamageType", "Damage", "Speed", "Strength", "Value");
+            //  Tabelle ausgeben
             for (Weapon w:weapons) {
                 System.out.println("-----------------------+----------------------+----------------------+----------------------+----------------------+----------------------+----------------------");
-
                 System.out.format(format, w.getName(), w.getCombatType(), w.getDamageType(), w.getDamage(), w.getSpeed(), w.getStrength(), w.getValue());
             }
+
             System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------------");
         };
         print.print(weapons);
